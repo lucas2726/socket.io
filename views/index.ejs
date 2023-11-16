@@ -6,19 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" name="" id="palavra" oninput="enviar()">
+    <input type="text" id="palavra" oninput="enviar()"> 
     <button onclick="">Enviar</button>
     <hr>
-    <p id="resultado" ></p>
+    <p id="resultado"></p>
 </body>
-<script src="/socket.io/socket.io.js">
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js">
 
-    const socket = io("http://localhost:3000")
-socket.on("disconnect", () => {
-    console.log("Desconectado")
-})
+    let socket = io("http://localhost:3000")
 
-    socket.emit("boasvindas", {nome: "Lucas Bueno"})
+    socket.on("disconnect", () => {
+        console.log("Desconectado")
+    })
+
+    socket.emit("boasvindas", { nome: "Lucas Bueno" })
 
     socket.on("resultado", (data) => {
         console.log(data)
@@ -26,10 +27,10 @@ socket.on("disconnect", () => {
         p.innerHTML = data
     })
 
-function enviar() {
-    let input = document.getElementById("palavra")
-    socket.emit("palavra", input.value)
-}
+    function enviar() {
+        let input = document.getElementById("palavra")
+        socket.emit("palavra", input.value)
+    }
 
 </script>
 </html>
