@@ -14,14 +14,6 @@ io.on("connection", (socket) => {
         console.log("X desconectou: " + socket.id)
     })
 
-    socket.on("boasvindas", (data) => {
-        console.log("Executando evento de boas vindas")
-        console.log(data)
-    })
-    socket.on("palavra", (data) => {
-        console.log(data)
-        socket.emit("resultado", data + " - Guia do programador!")
-    })
 })
 
 app.set("view engine", "ejs")

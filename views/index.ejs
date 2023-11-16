@@ -6,10 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="palavra" oninput="enviar()"> 
-    <button onclick="">Enviar</button>
-    <hr>
-    <p id="resultado"></p>
+    <h1>Chat do guia</h1>
+    <div id="chat">
+
+    </div><br>
+    <input type="text" name="" id="msg">
+    <input type="text" name="" id="username" placeholder="Seu nome de usuário">
+    <button>Enviar</button>
 </body>
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js">
 
@@ -18,19 +21,6 @@
     socket.on("disconnect", () => {
         console.log("Desconectado")
     })
-
-    socket.emit("boasvindas", { nome: "Lucas Bueno" })
-
-    socket.on("resultado", (data) => {
-        console.log(data)
-        let p = document.getElementById("resultado")
-        p.innerHTML = data
-    })
-
-    function enviar() {
-        let input = document.getElementById("palavra")
-        socket.emit("palavra", input.value)
-    }
 
 </script>
 </html>
